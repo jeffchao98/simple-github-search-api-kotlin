@@ -1,4 +1,4 @@
-# Simple helper for search Github repo
+# Simple helper for search Github repo (Kotlin)
 
 - This project provide the simple helper that returns a list of GitHub repository information with the given `organization` and `platform`.
 
