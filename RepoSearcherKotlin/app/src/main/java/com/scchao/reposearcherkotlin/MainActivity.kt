@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val searcher = GitRepoSearcher(this)
         searcher.searchWith("android", "rakutentech") { success, list ->
-            if(success) {
+            if (success) {
                 Log.i("TEST", list.size.toString())
             }
         }
