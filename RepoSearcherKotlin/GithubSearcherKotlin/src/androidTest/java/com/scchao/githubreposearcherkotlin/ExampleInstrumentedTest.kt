@@ -50,8 +50,15 @@ class ExampleInstrumentedTest {
     }
 
     @Test
-    fun exceptParserTestCaseWithEmptyData() {
+    fun exceptParserTestCaseWithEmptyItems() {
         val testRaw = "{'items':[]}"
+        val result = DataParser.parserResult(testRaw)
+        assertEquals(0, result.items?.size)
+    }
+
+    @Test
+    fun exceptParserTestCaseWithEmptyData() {
+        val testRaw = "{}"
         val result = DataParser.parserResult(testRaw)
         assertEquals(0, result.items?.size)
     }
