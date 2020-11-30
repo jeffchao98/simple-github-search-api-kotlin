@@ -6,15 +6,14 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.google.gson.Gson
 import com.scchao.githubreposearcherkotlin.helper.DataParser
 import com.scchao.githubreposearcherkotlin.models.RepoItem
-import com.scchao.githubreposearcherkotlin.models.RepoSearchResult
 
 open class GitRepoSearcher(
     context: Context
 ) {
-    val requestQueue = Volley.newRequestQueue(context)
+    private val requestQueue = Volley.newRequestQueue(context)
+    private val TAG = "GitRepoSearcher"
 
     open fun searchWith(
         platform: String,
@@ -25,7 +24,7 @@ open class GitRepoSearcher(
         requestQueue.add(makeVolleyRequest(url, callback))
     }
 
-    fun makeVolleyRequest(
+    private fun makeVolleyRequest(
         url: String,
         callback: ((success: Boolean, items: List<RepoItem>) -> Unit)
     ): StringRequest {
@@ -33,9 +32,15 @@ open class GitRepoSearcher(
             Response.Listener<String> { response ->
                 val data = DataParser.parserResult(response)
                 callback(true, data.items ?: listOf())
-//                Log.i("KotlinPlay", response)
+                printFetchedItems(data.items ?: listOf())
             }, Response.ErrorListener {
                 callback(false, listOf())
             })
+    }
+
+    private fun printFetchedItems(items: List<RepoItem>) {
+        for (item in items){
+            Log.i(TAG, item.toString())
+        }
     }
 }
