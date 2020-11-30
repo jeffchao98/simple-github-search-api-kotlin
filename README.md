@@ -70,7 +70,7 @@ dependencies {
 
 - For execute search, you can use the method after initial the library.
 - The first two string element represent the required input props `platform` and `organization`
-- In order to listen the search result and access the detail data in the logic, you need to setup and implement callback for the third input prop, which will return two attribtues:
+- In order to listen the search result and access the detail data in the logic, you need to setup and implement `callback` for the third input prop, which will return two attribtues:
   - The Boolean value `success` indicate if the search via github api is success or not
   - The `RepoItem` list indicate the fetched items, attributes as the following
 
